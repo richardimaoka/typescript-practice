@@ -1,14 +1,16 @@
-type Property = "grid-template-columns";
+type Property = "grid-template-columns" | "grid-template-rows";
 
 interface A {
-  gridTemplateColumns: string;
+  gridTemplateColumns?: string;
+  gridTemplateRows?: string;
 }
 
 function propertyToField(propertyName: Property): keyof A {
-  if (propertyName === "grid-template-columns") {
-    return "gridTemplateColumns";
-  } else {
-    throw new Error(`propertyName: "${propertyName}" is invalid`);
+  switch (propertyName) {
+    case "grid-template-columns":
+      return "gridTemplateColumns";
+    case "grid-template-rows":
+      return "gridTemplateRows";
   }
 }
 
