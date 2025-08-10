@@ -1,8 +1,10 @@
+type Property = "grid-template-columns";
+
 interface A {
   gridTemplateColumns: string;
 }
 
-function propertyToField(propertyName: string): keyof A {
+function propertyToField(propertyName: Property): keyof A {
   if (propertyName === "grid-template-columns") {
     return "gridTemplateColumns";
   } else {
@@ -15,7 +17,7 @@ function main() {
   const field = propertyToField("grid-template-columns");
   const result = a[field];
 
-  console.log(JSON.stringify(a));
+  console.log(`${JSON.stringify(a)} has a property "${field}" as '${result}'`);
 }
 
 main();
